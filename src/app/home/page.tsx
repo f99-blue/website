@@ -140,10 +140,8 @@ export default function Home() {
           <CommonFollowsArea className="h-full" />
         </div>
 
-        <div className="mt-4 w-full">
-          <div className="px-2 w-full">
-            <Area>More to come :)</Area>
-          </div>
+        <div className="md:px-2 mt-4 w-full">
+          <Area>More to come :)</Area>
         </div>
       </div>
     </main>
