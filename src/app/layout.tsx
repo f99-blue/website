@@ -2,7 +2,7 @@ import { Roboto } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-const inter = Roboto({
+const font = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={font.className}>
         {children}
         <Toaster position="bottom-right" />
       </body>

@@ -36,7 +36,9 @@ export default function Home() {
       <div className="w-[40rem] max-w-full">
         <div>
           <h1 className="font-bold text-3xl sm:text-5xl">f99</h1>
-          <p className="text-lg text-gray-300">A collection of Bluesky tools</p>
+          <p className="text-lg text-gray-300">
+            A collection of Bluesky tools.
+          </p>
         </div>
 
         <Area className="mt-4">

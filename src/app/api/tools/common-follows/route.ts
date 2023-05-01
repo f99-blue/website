@@ -11,6 +11,7 @@ export interface CommonFollowsResponse {
   };
 }
 
+// @todo make this more clever
 export async function GET(_request: Request) {
   const agent = await getAgent();
 
