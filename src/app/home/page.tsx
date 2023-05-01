@@ -63,7 +63,7 @@ function CommonFollowsArea(props: AreaProps) {
 
   return (
     <Area {...props}>
-      <div className="flex justify-between items-start">
+      <div className="md:flex justify-between items-start">
         <div>
           <h2 className="text-xl">Common follow suggestions</h2>
           <p className="text-gray-300">
@@ -76,7 +76,7 @@ function CommonFollowsArea(props: AreaProps) {
             cache.delete("/api/tools/common-follows");
             mutate("/api/tools/common-follows");
           }}
-          className="w-auto bg-gray-200 text-black"
+          className="mt-2 md:mt-0 w-full md:w-auto bg-gray-200 text-black"
         >
           Shuffle
         </Button>
@@ -89,10 +89,10 @@ function CommonFollowsArea(props: AreaProps) {
           (commonFollowsSwr.data?.data.commonFollows ?? []).map((x) => {
             return (
               <div
-                className="w-full bg-gray-700 p-4 rounded flex justify-between"
+                className="w-full bg-gray-700 p-4 rounded"
                 key={x.profile.did}
               >
-                <div className="w-1/2">
+                <div className="overflow-hidden">
                   <a
                     href={`https://staging.bsky.app/profile/${x.profile.handle}`}
                     rel="noreferrer"
@@ -100,7 +100,7 @@ function CommonFollowsArea(props: AreaProps) {
                     className="inline-block"
                   >
                     <img
-                      className="h-20 rounded border border-gray-600"
+                      className="h-20 rounded border border-gray-600 bg-gray-500"
                       src={x.profile.avatar}
                       alt={x.profile.handle + "'s avatar"}
                     />
@@ -111,7 +111,8 @@ function CommonFollowsArea(props: AreaProps) {
                   </a>
                   <p className="text-gray-200">{x.profile.description}</p>
                 </div>
-                <p className="text-gray-200">
+
+                <p className="mt-2 bg-gray-900 inline-block text-sm p-2 rounded text-gray-200">
                   Followed by <span className="text-white">{x.count}</span> of
                   your follows
                 </p>
