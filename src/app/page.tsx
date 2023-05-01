@@ -58,7 +58,7 @@ export default function Home() {
                 name="handle"
                 type="text"
                 required
-                placeholder="today.bsky.social"
+                placeholder="aoc.bsky.social"
               />
             </label>
 
