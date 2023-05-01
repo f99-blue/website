@@ -122,7 +122,7 @@ function CommonFollowsArea(props: AreaProps) {
       </div>
 
       <p className="text-right mt-2 text-sm text-gray-300">
-        ¹: A maximum of 50 random accounts you follow are chosen at a time
+        ¹: A maximum of 50 random accounts you follow are choosen at a time
       </p>
     </Area>
   );
