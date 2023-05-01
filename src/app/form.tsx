@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 export function Form() {
   async function login(username: string, password: string) {
     try {
-      const loadingToastId = toast.loading("Trying credentials");
+      const loadingToastId = toast.loading("Trying credentials...");
 
       const res = await fetch("/api/login", {
         method: "post",
@@ -26,7 +26,7 @@ export function Form() {
       document.location.href = "/home";
     } catch (e) {
       console.error(e);
-      toast.error("Failed to log in");
+      toast.error("Failed to log in :(");
     }
   }
 

@@ -11,7 +11,7 @@ export function Button(_props: ButtonProps) {
       type={type === "submit" ? "submit" : "button"}
       className={`px-6 py-3 text-center block bg-_red rounded ${
         className?.includes("w-") ? "" : "w-full"
-      } outline-1 outline-none focus:outline-gray-200 ${
+      } outline-1 outline-none focus:outline-gray-500 ${
         className?.includes("text-") ? "" : "text-white"
       } ${className}`}
       {...props}

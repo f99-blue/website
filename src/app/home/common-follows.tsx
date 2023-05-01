@@ -4,6 +4,7 @@ import { Area, AreaProps } from "@/components/area";
 import { Button } from "@/components/button";
 import { LoadingBlock } from "@/components/loading-block";
 import { useSwr } from "@/utils/swr";
+import { toast } from "react-hot-toast";
 import { useSWRConfig } from "swr";
 import { CommonFollowsResponse } from "../api/tools/common-follows/route";
 
@@ -21,6 +22,25 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
       revalidateOnReconnect: false,
     }
   );
+
+  async function follow(did: string) {
+    const loadingToastId = toast.loading("Following...");
+
+    const res = await fetch("/api/me/actions/follow", {
+      method: "post",
+      headers: new Headers({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ did }),
+    });
+
+    toast.dismiss(loadingToastId);
+
+    if (!res.ok) {
+      toast.error("Failed to follow :(");
+      throw new Error("Not ok");
+    }
+
+    toast.success("Followed!");
+  }
 
   return (
     <Area {...props.area}>
@@ -50,10 +70,33 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
           (commonFollowsSwr.data?.data.commonFollows ?? []).map((x) => {
             return (
               <div
-                className="w-full bg-gray-700 p-4 rounded"
+                className="w-full bg-gray-700 p-4 rounded flex flex-col-reverse md:flex-row justify-between"
                 key={x.profile.did}
               >
-                <div className="overflow-hidden">
+                <div className="mt-4 md:mt-0 md:w-1/3">
+                  <p className="inline-block rounded text-gray-200">
+                    Followed by <span className="text-white">{x.count}</span> of
+                    your follows
+                  </p>
+
+                  <Button
+                    onClick={async (e) => {
+                      const button = e.currentTarget;
+
+                      button.disabled = true;
+                      try {
+                        await follow(x.profile.did);
+                      } catch {
+                        button.disabled = false;
+                      }
+                    }}
+                    className="md:w-auto w-full bg-gray-900 mt-2 disabled:bg-opacity-50"
+                  >
+                    Follow
+                  </Button>
+                </div>
+
+                <div className="md:w-2/3 bg-gray-900 p-4 rounded overflow-hidden">
                   <a
                     href={`https://staging.bsky.app/profile/${x.profile.handle}`}
                     rel="noreferrer"
@@ -61,7 +104,7 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
                     className="inline-block"
                   >
                     <img
-                      className="h-20 rounded border border-gray-600 bg-gray-500"
+                      className="h-20 rounded border border-gray-700 bg-gray-500"
                       src={x.profile.avatar}
                       alt={x.profile.handle + "'s avatar"}
                     />
@@ -72,11 +115,6 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
                   </a>
                   <p className="text-gray-200">{x.profile.description}</p>
                 </div>
-
-                <p className="mt-2 bg-gray-900 inline-block text-sm p-2 rounded text-gray-200">
-                  Followed by <span className="text-white">{x.count}</span> of
-                  your follows
-                </p>
               </div>
             );
           })
