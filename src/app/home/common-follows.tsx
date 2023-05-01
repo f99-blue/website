@@ -48,7 +48,7 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
         <div>
           <h2 className="text-xl">Common follow suggestions</h2>
           <p className="text-gray-300">
-            The accounts your follows'¹ follow the most.
+            The accounts your follows&apos;¹ follow the most.
           </p>
         </div>
 
