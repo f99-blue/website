@@ -28,7 +28,7 @@ export default function RootLayout({
 
         <div className="fixed bottom-0 left-0 ml-4 mb-4 text-gray-300">
           <a
-            href="https://github.com/grayliquid/f99-blue"
+            href="https://github.com/grayliquid/f99.blue"
             rel="noreferrer"
             target="_blank"
           >
