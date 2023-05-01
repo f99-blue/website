@@ -15,7 +15,7 @@ function ProfileArea(props: AreaProps) {
   );
 
   return (
-    <Area className="h-full">
+    <Area {...props}>
       <div className="ml-4">
         <h1 className="font-bold text-2xl">
           @

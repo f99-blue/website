@@ -1,21 +1,15 @@
-import { BskyAgent } from "@atproto/api";
 import { NextResponse } from "next/server";
-import { getSession } from "../../_utils/get-session";
+import { getAgent } from "../../_utils/get-agent";
 
 export async function GET(_request: Request) {
-  const session = getSession();
+  const agent = await getAgent();
 
-  if (!session)
-    return NextResponse.json({ error: "Not logged in" }, { status: 401 });
-
-  const agent = new BskyAgent({
-    service: "https://bsky.social",
-  });
-  await agent.resumeSession(session);
+  if (!agent)
+    return NextResponse.json({ error: "No valid session" }, { status: 401 });
 
   return NextResponse.json({
     data: {
-      profile: (await agent.getProfile({ actor: session.did })).data,
+      profile: (await agent.getProfile({ actor: agent.session!.did })).data,
     },
   });
 }

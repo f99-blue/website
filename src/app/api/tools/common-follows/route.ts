@@ -1,7 +1,6 @@
-import { BskyAgent } from "@atproto/api";
 import { ProfileView } from "@atproto/api/src/client/types/app/bsky/actor/defs";
 import { NextResponse } from "next/server";
-import { getSession } from "../../_utils/get-session";
+import { getAgent } from "../../_utils/get-agent";
 
 export interface CommonFollowsResponse {
   data: {
@@ -13,15 +12,10 @@ export interface CommonFollowsResponse {
 }
 
 export async function GET(_request: Request) {
-  const session = getSession();
+  const agent = await getAgent();
 
-  if (!session)
-    return NextResponse.json({ error: "Not logged in" }, { status: 401 });
-
-  const agent = new BskyAgent({
-    service: "https://bsky.social",
-  });
-  await agent.resumeSession(session);
+  if (!agent)
+    return NextResponse.json({ error: "No valid session" }, { status: 401 });
 
   const myFollowsFull = await (async () => {
     const result: ProfileView[] = [];
@@ -30,7 +24,7 @@ export async function GET(_request: Request) {
     while (true) {
       const { data } = await agent.getFollows({
         limit: 100,
-        actor: session.did,
+        actor: agent.session!.did,
         cursor,
       });
 
