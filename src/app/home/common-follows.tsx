@@ -16,11 +16,9 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
   const commonFollowsSwr = useSwr<CommonFollowsResponse["data"]>(
     "/api/tools/common-follows",
     {
-      swr: {
-        revalidateOnFocus: false,
-        revalidateIfStale: false,
-        revalidateOnReconnect: false,
-      },
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+      revalidateOnReconnect: false,
     }
   );
 
