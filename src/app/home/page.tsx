@@ -67,7 +67,7 @@ function CommonFollowsArea(props: AreaProps) {
         <div>
           <h2 className="text-xl">Common follow suggestions</h2>
           <p className="text-gray-300">
-            The accounts your follows' follow the most.
+            The accounts your follows'¹ follow the most.
           </p>
         </div>
 
@@ -81,7 +81,6 @@ function CommonFollowsArea(props: AreaProps) {
           Shuffle
         </Button>
       </div>
-
       <div className="mt-2 space-y-2 max-h-96 overflow-auto">
         {commonFollowsSwr.isLoading ? (
           <LoadingBlock />
@@ -121,6 +120,10 @@ function CommonFollowsArea(props: AreaProps) {
           })
         )}
       </div>
+
+      <p className="text-right mt-2 text-sm text-gray-300">
+        ¹: A maximum of 50 random accounts you follow are chosen at a time
+      </p>
     </Area>
   );
 }
