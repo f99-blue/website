@@ -16,7 +16,7 @@ function ProfileArea(props: AreaProps) {
 
   return (
     <Area {...props}>
-      <div className="ml-4">
+      <div className="">
         <h1 className="font-bold text-2xl">
           @
           <LoadingText isLoading={profileSwr.isLoading}>
