@@ -1,34 +1,13 @@
-"use client";
-
 import { Area } from "@/components/area";
-import { Button } from "@/components/button";
-import Input from "@/components/input";
-import { getInputByFormElement } from "@/utils/get-input";
-import { toast } from "react-hot-toast";
+import { redirect } from "next/navigation";
+import { getProfile } from "./api/me/profile/route";
+import { Form } from "./form";
 
-export default function Home() {
-  async function login(username: string, password: string) {
-    try {
-      const loadingToastId = toast.loading("Trying credentials");
+export default async function Home() {
+  const profile = await getProfile();
 
-      const res = await fetch("/api/login", {
-        method: "post",
-        headers: new Headers({ "Content-Type": "application/json" }),
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
-
-      if (!res.ok) throw new Error("");
-
-      toast.dismiss(loadingToastId);
-      toast.success("Logged in, redirecting...");
-      document.location.href = "/home";
-    } catch (e) {
-      console.error(e);
-      toast.error("Failed to log in");
-    }
+  if (profile) {
+    redirect("/home");
   }
 
   return (
@@ -42,44 +21,7 @@ export default function Home() {
         </div>
 
         <Area className="mt-4">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-
-              login(
-                getInputByFormElement(e.currentTarget, "handle"),
-                getInputByFormElement(e.currentTarget, "password")
-              );
-            }}
-          >
-            <label className="block">
-              <span className="block mb-1">Handle</span>
-              <Input
-                name="handle"
-                type="text"
-                required
-                placeholder="aoc.bsky.social"
-              />
-            </label>
-
-            <label className="mt-4 block">
-              <span className="block mb-1">App password</span>
-              <Input
-                name="password"
-                type="password"
-                required
-                placeholder="bsky>twitt3r"
-              />
-            </label>
-
-            <Button type="submit" className="mt-4">
-              Log in
-            </Button>
-
-            <p className="text-gray-400 mt-1 text-sm">
-              * Service currently hardcoded to https://bsky.social
-            </p>
-          </form>
+          <Form />
         </Area>
       </div>
     </main>
