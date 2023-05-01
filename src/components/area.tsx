@@ -1,6 +1,6 @@
 import { AllHTMLAttributes, PropsWithChildren } from "react";
 
-interface AreaProps
+export interface AreaProps
   extends PropsWithChildren<AllHTMLAttributes<HTMLDivElement>> {}
 
 export function Area(_props: AreaProps) {
@@ -8,7 +8,7 @@ export function Area(_props: AreaProps) {
 
   return (
     <div
-      className={`bg-white p-6 block rounded border border-zinc-2oo shadow-sm ${className}`}
+      className={`bg-gray-800 p-6 block rounded shadow-sm ${className}`}
       {...props}
     >
       {props.children}

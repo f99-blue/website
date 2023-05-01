@@ -11,7 +11,11 @@ export function LoadingText(props: LoadingTextProps) {
         props.isLoading ? "opacity-50" : "opactiy-100"
       }`}
     >
-      {props.children ?? <span className="animate-pulse">???</span>}
+      <span
+        className={`inline-block ${props.isLoading ? "animate-pulse" : ""}`}
+      >
+        {props.isLoading ? "???" : props.children}
+      </span>
     </span>
   );
 }

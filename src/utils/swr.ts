@@ -1,9 +1,15 @@
-import useSWR from "swr";
+import useSWR, { SWRConfiguration } from "swr";
 
 export const fetcher = (...args: Parameters<typeof fetch>) =>
   fetch(...args).then((res) => res.json());
 
-export const useSwr = <Data>(key: string) =>
-  useSWR<{
+export const useSwr = <Data>(
+  key: Parameters<typeof useSWR>[0],
+  options?: SWRConfiguration
+) => {
+  console.log(key);
+
+  return useSWR<{
     data: Data;
-  }>(key, fetcher);
+  }>(Array.isArray(key) ? key[0] : key, fetcher, options);
+};

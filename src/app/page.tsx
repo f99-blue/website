@@ -24,6 +24,7 @@ export default function Home() {
 
       toast.dismiss(loadingToastId);
       toast.success("Logged in, redirecting...");
+      document.location.href = "/home";
     } catch (e) {
       console.error(e);
       toast.error("Failed to log in");
@@ -31,11 +32,11 @@ export default function Home() {
   }
 
   return (
-    <main className="flex items-center justify-center min-h-screen">
-      <div className="w-1/2">
+    <main className="flex items-center justify-center min-h-screen p-4">
+      <div className="w-[40rem] max-w-full">
         <div>
-          <h1 className="font-bold text-5xl">f99</h1>
-          <p className="text-lg text-zinc-600">A collection of Bluesky tools</p>
+          <h1 className="font-bold text-3xl sm:text-5xl">f99</h1>
+          <p className="text-lg text-gray-300">A collection of Bluesky tools</p>
         </div>
 
         <Area className="mt-4">
@@ -73,7 +74,7 @@ export default function Home() {
               Log in
             </Button>
 
-            <p className="text-zinc-500 mt-1 text-sm">
+            <p className="text-gray-400 mt-1 text-sm">
               * Service currently hardcoded to https://bsky.social
             </p>
           </form>
