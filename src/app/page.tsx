@@ -1,6 +1,6 @@
 import { Area } from "@/components/area";
 import { redirect } from "next/navigation";
-import { getProfile } from "./api/me/profile/route";
+import { getProfile } from "./api/me/profile/get-profile";
 import { Form } from "./form";
 
 export default async function Home() {
