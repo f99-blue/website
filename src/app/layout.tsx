@@ -26,13 +26,13 @@ export default function RootLayout({
         {children}
         <Toaster position="bottom-right" />
 
-        <div className="fixed bottom-0 left-0 ml-4 mb-4 text-gray-300">
+        <div className="fixed bottom-0 left-0 ml-2 mb-2 text-pink-500 opacity-75">
           <a
             href="https://github.com/grayliquid/f99.blue"
             rel="noreferrer"
             target="_blank"
           >
-            GitHub
+            github
           </a>
         </div>
       </body>

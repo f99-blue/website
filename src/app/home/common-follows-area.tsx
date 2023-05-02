@@ -57,7 +57,7 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
             cache.delete("/api/tools/common-follows");
             mutate("/api/tools/common-follows");
           }}
-          className="mt-2 md:mt-0 w-full md:w-auto bg-gray-200 text-black"
+          className="mt-2 md:mt-0 w-full md:w-auto"
         >
           Shuffle
         </Button>
@@ -90,13 +90,13 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
                         button.disabled = false;
                       }
                     }}
-                    className="md:w-auto w-full bg-gray-900 mt-2 disabled:bg-opacity-50"
+                    className="md:w-auto w-full mt-2 disabled:bg-opacity-25"
                   >
                     Follow
                   </Button>
                 </div>
 
-                <div className="md:w-2/3 bg-gray-900 p-4 rounded overflow-hidden">
+                <div className="md:w-2/3 md:ml-4 bg-gray-900 p-4 rounded overflow-hidden">
                   <a
                     href={`https://staging.bsky.app/profile/${x.profile.handle}`}
                     rel="noreferrer"

@@ -9,10 +9,10 @@ export function Button(_props: ButtonProps) {
   return (
     <button
       type={type === "submit" ? "submit" : "button"}
-      className={`px-6 py-3 text-center block bg-_red rounded ${
+      className={`px-6 py-3 text-center block bg-gray-200 rounded ${
         className?.includes("w-") ? "" : "w-full"
-      } outline-1 outline-none focus:outline-gray-500 ${
-        className?.includes("text-") ? "" : "text-white"
+      } outline-1 outline-none focus:outline-gray-400 ${
+        className?.includes("text-") ? "" : "text-black"
       } ${className}`}
       {...props}
     >

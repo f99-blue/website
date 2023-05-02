@@ -8,7 +8,7 @@ export function Area(_props: AreaProps) {
 
   return (
     <div
-      className={`bg-gray-800 p-6 block rounded shadow-sm ${className}`}
+      className={`bg-gray-800 p-6 block border border-gray-600 rounded-lg shadow-sm ${className}`}
       {...props}
     >
       {props.children}

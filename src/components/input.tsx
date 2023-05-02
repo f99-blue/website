@@ -8,7 +8,7 @@ export default function Input(_props: InputProps) {
 
   return (
     <input
-      className={`block w-full p-3 bg-gray-700 text-white outline-1 outline-none focus:outline-gray-200 rounded ${className}`}
+      className={`block w-full p-3 bg-gray-700 text-white outline-1 outline-none focus:outline-gray-400 rounded ${className}`}
       {...props}
     >
       {props.children}
