@@ -12,7 +12,7 @@ export function ProfileArea(props: ProfileAreaProps) {
   return (
     <Area {...props.area}>
       <div className="">
-        <h1 className="font-bold text-2xl">
+        <h1 className="text-2xl">
           {props.profile.displayName ?? props.profile.handle}
         </h1>
         <p className="text-gray-100 text-sm">@{props.profile.handle}</p>

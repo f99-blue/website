@@ -6,7 +6,7 @@ import { Form } from "./form";
 export default async function Home() {
   const profile = await getProfile();
 
-  if (profile) {
+  if (profile && process.env.NODE_ENV !== "development") {
     redirect("/home");
   }
 
@@ -14,7 +14,7 @@ export default async function Home() {
     <main className="flex items-center justify-center min-h-screen p-4">
       <div className="w-[40rem] max-w-full">
         <div>
-          <h1 className="font-bold text-3xl sm:text-5xl">f99</h1>
+          <h1 className="text-3xl sm:text-5xl">f99</h1>
           <p className="text-lg text-gray-300">Your new Bluesky dashboard.</p>
         </div>
 

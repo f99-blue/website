@@ -22,11 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body>
         {children}
         <Toaster position="bottom-right" />
 
-        <div className="fixed bottom-0 left-0 ml-2 mb-2 text-pink-500 opacity-75">
+        <div className="fixed bottom-0 left-0 ml-2 mb-2 text-green-400 opacity-50">
           <a
             href="https://github.com/grayliquid/f99.blue"
             rel="noreferrer"

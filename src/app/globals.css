@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Massanges Big";
+  src: url(/fonts/massanges-big.woff);
+}
+
 body {
+  font-family: "Massanges Big";
   @apply bg-gray-900 text-white;
 }

@@ -109,7 +109,7 @@ export function CommonFollowsArea(props: CommonFollowsAreaProps) {
                       alt={x.profile.handle + "'s avatar"}
                     />
 
-                    <h3 className="text-xl font-bold mt-2">
+                    <h3 className="text-xl mt-2">
                       {x.profile.displayName ?? x.profile.handle}
                     </h3>
                     <p className="text-gray-100 text-sm">@{x.profile.handle}</p>
