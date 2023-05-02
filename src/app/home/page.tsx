@@ -1,7 +1,7 @@
 import { Area } from "@/components/area";
 import { redirect } from "next/navigation";
 import { getProfile } from "../api/me/profile/route";
-import { CommonFollowsArea } from "./common-follows";
+import { CommonFollowsArea } from "./common-follows-area";
 import { ProfileArea } from "./profile-area";
 
 export default async function Home() {

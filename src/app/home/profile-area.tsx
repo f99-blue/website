@@ -12,7 +12,10 @@ export function ProfileArea(props: ProfileAreaProps) {
   return (
     <Area {...props.area}>
       <div className="">
-        <h1 className="font-bold text-2xl">@{props.profile.handle}</h1>
+        <h1 className="font-bold text-2xl">
+          {props.profile.displayName ?? props.profile.handle}
+        </h1>
+        <p className="text-gray-100 text-sm">@{props.profile.handle}</p>
 
         <div className="mt-1 space-x-4 text-sm">
           <span>
@@ -26,7 +29,9 @@ export function ProfileArea(props: ProfileAreaProps) {
           </span>
         </div>
 
-        <p className="mt-1 whitespace-pre-wrap">{props.profile.description}</p>
+        <p className="mt-1 whitespace-pre-wrap text-gray-200">
+          {props.profile.description}
+        </p>
       </div>
     </Area>
   );

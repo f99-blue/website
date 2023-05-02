@@ -1,6 +1,7 @@
 import { ProfileView } from "@atproto/api/src/client/types/app/bsky/actor/defs";
 import { NextResponse } from "next/server";
 import { getAgent } from "../../_utils/get-agent";
+import { COMMON_RESPONSE } from "../../_utils/response";
 
 export interface CommonFollowsResponse {
   data: {
@@ -14,9 +15,7 @@ export interface CommonFollowsResponse {
 // @todo make this more clever
 export async function GET(_request: Request) {
   const agent = await getAgent();
-
-  if (!agent)
-    return NextResponse.json({ error: "No valid session" }, { status: 401 });
+  if (!agent) return COMMON_RESPONSE.noValidSession;
 
   const myFollowsFull = await (async () => {
     const result: ProfileView[] = [];

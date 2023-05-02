@@ -9,10 +9,15 @@ export async function getAgent() {
   const agent = new BskyAgent({
     service: "https://bsky.social",
   });
-  const resumedRes = await agent.resumeSession(session);
 
-  if (!resumedRes.success) return null;
-  if (!agent.session) return null;
+  try {
+    const resumedRes = await agent.resumeSession(session);
 
-  return agent;
+    if (!resumedRes.success) return null;
+    if (!agent.session) return null;
+
+    return agent;
+  } catch {
+    return null;
+  }
 }
