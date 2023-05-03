@@ -1,8 +1,8 @@
-# f99.blue
-
-[Live version](https://f99.blue)
+# f99-blue/website
 
 A collection of Bluesky tools.
+
+- [Live version](https://f99.blue)
 
 ## Contributing
 
